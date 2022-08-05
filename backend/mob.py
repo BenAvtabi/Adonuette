@@ -1,4 +1,5 @@
 import json
+from flask_api import status
 
 MOB_ID_PLACEHOLDER = 69
 MOB_NAME_PLACEHOLDER = "testMob"
@@ -72,4 +73,4 @@ class MobResponder():
 		mobs = [self._fetch_mob(mob_id) for mob_id in mob_ids]
 		mobs_dict = {mob.get_id(): mob.get_dict() for mob in mobs}
 
-		return json.dumps(mobs_dict)
+		return json.dumps(mobs_dict), status.HTTP_200_OK

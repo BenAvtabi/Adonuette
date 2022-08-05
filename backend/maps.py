@@ -1,4 +1,5 @@
 import json
+from flask_api import status
 
 PLACEHOLDER_MAP_NAME_ID1 = {"id": "map_id1", "name": "map_name1"}
 PLACEHOLDER_MAP_NAME_ID2 = {"id": "map_id2", "name": "map_name2"}
@@ -14,4 +15,4 @@ class RecommendedMapsResponder():
 
 	def get_response(self):
 		maps = self._fetch_recommended_maps(self._level)
-		return json.dumps(maps)
+		return json.dumps(maps), status.HTTP_200_OK
