@@ -5,9 +5,10 @@ MOB_NAME_PLACEHOLDER = "testMob"
 MOB_LEVEL_PLACEHOLDER = 275
 MOB_EXP_PLACEHOLDER = 10
 
+
 class Mob():
 
-	def __init__(mob_id, name, level, exp):
+	def __init__(self, mob_id, name, level, exp):
 		self._id = mob_id
 		self._name = name
 		self._level = level
@@ -25,15 +26,16 @@ class Mob():
 	def get_id(self):
 		return self._id
 
+
 class MobResponder():
 
 	def __init__(self, mob_id):
 		self._id = mob_id
 
 	# TODO: Fetch from DB
-	def _fetch_mob(mob_id):
+	def _fetch_mob(self, mob_id):
 		return Mob.create_dummy()
 
 	def get_response(self):
 		mob = self._fetch_mob(self._id)
-		return json.dump(mob.get_dict())
+		return json.dumps(mob.get_dict())

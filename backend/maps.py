@@ -1,12 +1,12 @@
 import json
-import Mob
+from mob import Mob
 
 MAP_ID_PLACEHOLDER = 420
 MAP_NAME_PLACEHOLDER = "testMap"
 
 class Map():
 
-	def __init__(map_id, name, mobs):
+	def __init__(self, map_id, name, mobs):
 		self._id = map_id
 		self._name = name
 		self._mobs = mobs
@@ -17,8 +17,8 @@ class Map():
 		return map_dict
 
 	@classmethod
-	def create_dummy(cls):
-		return Map(MAP_ID_PLACEHOLDER, MAP_NAME_PLACEHOLDER, [Mob.create_dummy()])
+	def create_dummy(cls, id=MAP_ID_PLACEHOLDER):
+		return Map(id, MAP_NAME_PLACEHOLDER, [Mob.create_dummy()])
 
 	def get_id(self):
 		return self._id
@@ -29,10 +29,10 @@ class MapsResponder():
 		self._level = level
 
 	# TODO: Fetch from DB all maps with (min_level <= level and max_level >= level)
-	def _fetch_maps(level):
-		return [Map.create_dummy(), Map.create_dummy()]
+	def _fetch_maps(self, level):
+		return [Map.create_dummy(0), Map.create_dummy(1)]
 
 	def get_response(self):
 		maps = self._fetch_maps(self._level)
-		map_dict = {map.get_id(): map.get_dict() for map in maps}
-		return json.dump(map_dict)
+		maps_dict = {map.get_id(): map.get_dict() for map in maps}
+		return json.dumps(maps_dict)
