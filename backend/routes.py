@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route('/maps/<level>')
 def maps(level):
-    return 0, 400
+    responder = MapsResponder(level)
+    return responder.get_response(), 400
 
 @app.route('/mob/<id>')
 def mob(id):
