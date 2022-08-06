@@ -1,4 +1,4 @@
-import json
+from flask import jsonify
 from flask_api import status
 from database_wrapper import DatabaseWrapper
 
@@ -14,4 +14,4 @@ class RecommendedMapsResponder():
 	def get_response(self):
 		maps = self._fetch_recommended_maps(self._level)
 
-		return json.dumps(maps), status.HTTP_200_OK
+		return jsonify(maps), status.HTTP_200_OK

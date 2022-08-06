@@ -1,4 +1,5 @@
 from flask import Flask
+from floask_cors import cross_origin
 from recommended_maps_responder import RecommendedMapsResponder
 from mobs_responder import MobsResponder
 

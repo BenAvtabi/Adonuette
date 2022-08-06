@@ -1,4 +1,4 @@
-import json
+from flask import jsonify
 from flask_api import status
 from database_wrapper import DatabaseWrapper
 
@@ -19,4 +19,4 @@ class MobsResponder():
 		mob_ids = self._fetch_mob_ids(self._map_id)
 		mobs = [self._fetch_mob(mob_id).get_dict() for mob_id in mob_ids]
 
-		return json.dumps(mobs), status.HTTP_200_OK
+		return jsonify(mobs), status.HTTP_200_OK
